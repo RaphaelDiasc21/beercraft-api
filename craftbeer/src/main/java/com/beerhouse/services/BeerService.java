@@ -1,5 +1,12 @@
 package com.beerhouse.services;
 
-public class BeerService {
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.beerhouse.entities.Beer;
+
+@Service
+public class BeerService {
+	
 }
