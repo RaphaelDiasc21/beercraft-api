@@ -7,5 +7,5 @@ import com.beerhouse.entities.Beer;
 
 @Repository
 public interface BeerRepository extends JpaRepository<Beer,Integer>{
-
+	
 }

@@ -25,7 +25,7 @@ public class Beer {
 	@Column
 	private String alcoholContent;
 	
-	@Column(precision = 3, scale = 2)
+	@Column(precision = 4, scale = 2)
 	private BigDecimal price;
 	
 	@Column
@@ -34,7 +34,15 @@ public class Beer {
 	public Beer() {
 		
 	}
-
+	
+	public Beer(String name, String ingredients, String alcoholContent, BigDecimal price, String category) {
+		this.name = name;
+		this.ingredients = ingredients;
+		this.alcoholContent = alcoholContent;
+		this.price = price;
+		this.category = category;
+	}
+	
 	public Integer getId() {
 		return Id;
 	}
