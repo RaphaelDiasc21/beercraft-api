@@ -3,6 +3,10 @@ package com.beerhouse.serrvices.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import static org.mockito.Matchers.argThat;
+
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -58,7 +62,7 @@ public class BeerServiceImplTest {
 	}
 	
 	@Test
-	public void shouldReturnBeerCreatedId() {
+	public void shouldReturnCreatedBeer() {
 		Beer beerToTestCreateBeerMethod = new Beer("Beer to test","Ingredients to test",
 				   									"alcohol content to test",
 				   									new BigDecimal(6.50),
@@ -67,7 +71,51 @@ public class BeerServiceImplTest {
 		beerToTestCreateBeerMethod.setId(1);
 		when(beerRepository.save(beerToTestCreateBeerMethod)).thenReturn(beerToTestCreateBeerMethod);
 		
-		assertEquals(1,beerServiceImpl.createBeer(beerToTestCreateBeerMethod));
+		assertEquals(beerToTestCreateBeerMethod,beerServiceImpl.createBeer(beerToTestCreateBeerMethod));
+	}
+	
+	@Test
+	public void shouldUpdateBeer() {
+		Beer beerToMock = new Beer();
+		beerToMock.setId(1);
+		beerToMock.setName("Beer to Mock");
+		beerToMock.setIngredients("Beer to mock ingredients");
+		beerToMock.setAlcoholContent("Beer to mock alcohol content");
+		beerToMock.setPrice(new BigDecimal(10.50));
+		beerToMock.setCategory("Pilsen");
+		
+		
+		Beer beerToTestUpdate = new Beer();
+		beerToTestUpdate.setId(1);
+		beerToTestUpdate.setName("Beer updated");
+		beerToTestUpdate.setIngredients("Beer updated ingredients");
+		beerToTestUpdate.setAlcoholContent("Beer to mock alcohol content");
+		beerToTestUpdate.setPrice(new BigDecimal(10.50));
+		beerToTestUpdate.setCategory("Pilsen");
+		
+		when(beerRepository.findById(beerToMock.getId())).thenReturn(Optional.of(beerToMock));
+	
+		beerServiceImpl.updateBeer(beerToTestUpdate.getId(), beerToTestUpdate);
+		
+		verify(beerRepository, times(1)).save(argThat((Beer beer) -> beer.getName() == "Beer updated"));
+
+	}
+	
+	@Test
+	public void shouldDeleteBeer() {
+		Beer beerToMock = new Beer();
+		beerToMock.setId(1);
+		beerToMock.setName("Beer to Mock");
+		beerToMock.setIngredients("Beer to mock ingredients");
+		beerToMock.setAlcoholContent("Beer to mock alcohol content");
+		beerToMock.setPrice(new BigDecimal(10.50));
+		beerToMock.setCategory("Pilsen");
+		
+		when(beerRepository.findById(beerToMock.getId())).thenReturn(Optional.of(beerToMock));
+	
+		beerServiceImpl.deleteBeer(beerToMock.getId());
+		
+		verify(beerRepository, times(1)).deleteById(beerToMock.getId());
 	}
 	
 	@Test

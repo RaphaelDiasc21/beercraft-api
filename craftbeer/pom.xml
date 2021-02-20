@@ -40,21 +40,25 @@
 		    <artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<!-- Spring dev tools -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-devtools</artifactId>
 		    <version>2.4.3</version>
 		</dependency>
-		
-        <!-- Lombok -->
-        <dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+	
+		<!-- Json patch API -->
+		<dependency>
+		    <groupId>com.github.java-json-tools</groupId>
+		    <artifactId>json-patch</artifactId>
+		    <version>1.12</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.11.1</version>
+		</dependency>
 		<!-- H2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>

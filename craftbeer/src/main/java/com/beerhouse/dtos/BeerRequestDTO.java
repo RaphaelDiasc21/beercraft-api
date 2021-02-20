@@ -6,10 +6,6 @@ import javax.validation.constraints.NotNull;
 
 import com.beerhouse.entities.Beer;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
 public class BeerRequestDTO{
 	
 	@NotNull(message = "Beer's name is required")

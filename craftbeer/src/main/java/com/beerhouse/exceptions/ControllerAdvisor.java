@@ -1,7 +1,6 @@
 package com.beerhouse.exceptions;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +21,13 @@ import com.beerhouse.controllers.BeerController;
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(value = {BeerNotFoundException.class})
-	public ResponseEntity<Object> BeerNotFoundException(BeerNotFoundException e) {
+	public ResponseEntity<Object> beerNotFoundException(BeerNotFoundException e) {
 		    return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(value = {ParseJsonPatchException.class})
+	public ResponseEntity<Object> parseJsonPatchException(ParseJsonPatchException e) {
+	    return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
     @Override

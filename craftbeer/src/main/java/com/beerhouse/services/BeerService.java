@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.beerhouse.entities.Beer;
 import com.beerhouse.exceptions.BeerNotFoundException;
+import com.beerhouse.exceptions.ParseJsonPatchException;
 import com.beerhouse.services.impl.BeerServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 
 @Service
 public class BeerService {
@@ -29,12 +33,12 @@ public class BeerService {
 
 	}
 	
-	public void updateBeer(int id, Beer beer) throws BeerNotFoundException{
-		try {
-			beerServiceImpl.updateBeer(id, beer);
-		}catch(BeerNotFoundException e) {
-			throw new BeerNotFoundException("Beer nor found");
-		}
+	public void updateCompleteBeer(int id, Beer beer) throws BeerNotFoundException{
+			beerServiceImpl.updateCompleteBeer(id, beer);
+	}
+	
+	public void updatePatiallyBeer(int id, JsonPatch patch) throws ParseJsonPatchException {
+		beerServiceImpl.updatePartiallyBeer(id, patch);
 	}
 	
 	public void deleteBeer(int id) throws BeerNotFoundException{
