@@ -16,9 +16,8 @@ public class BeerServiceImpl{
 	@Autowired
 	private BeerRepository beerRepository;
 	
-	public int createBeer(Beer beer) {
-		Beer beerCreated = beerRepository.save(beer);
-		return beerCreated.getId();
+	public Beer createBeer(Beer beer) {
+		return beerRepository.save(beer);
 	}
 	
 	public List<Beer> getBeers(){
@@ -26,13 +25,8 @@ public class BeerServiceImpl{
 	}
 	
 	public Beer getBeerById(int id) throws BeerNotFoundException{
-		Optional<Beer> beerFounded = beerRepository.findById(id);
-		
-		if(beerFounded.isPresent()) {
-			return beerFounded.get();
-		}
-
-		throw new BeerNotFoundException("Beer not found");
+		return beerRepository.findById(id)
+					.orElseThrow(() -> new BeerNotFoundException("Beer not found"));
 	}
 	
 	public void updateBeer(int id, Beer beer) throws BeerNotFoundException{
@@ -56,10 +50,9 @@ public class BeerServiceImpl{
 		
 		if(beerFounded.isPresent()) {
 			Beer beerToDelete = beerFounded.get();
-			beerRepository.delete(beerToDelete);
+			beerRepository.deleteById(beerToDelete.getId());
+		}else {
+			throw new BeerNotFoundException("Beer not found");
 		}
-
-		throw new BeerNotFoundException("Beer not found");
-		
 	}
 }

@@ -4,14 +4,13 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
-import org.springframework.stereotype.Component;
+import com.beerhouse.entities.Beer;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class BeerRequestDTO extends BeerDTO{
+
+public class BeerRequestDTO{
 	
 	@NotNull(message = "Beer's name is required")
 	private String name;
@@ -26,6 +25,61 @@ public class BeerRequestDTO extends BeerDTO{
 	private BigDecimal price;
 	
 	@NotNull(message = "Beer's category is required")
-	private BigDecimal category;
+	private String category;
+	
+	
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getIngredients() {
+		return ingredients;
+	}
+
+
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+
+
+	public String getAlcoholContent() {
+		return alcoholContent;
+	}
+
+
+	public void setAlcoholContent(String alcoholContent) {
+		this.alcoholContent = alcoholContent;
+	}
+
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+	public Beer convertToBeer() {
+		return new Beer(name,ingredients,alcoholContent,price,category);
+	}
 	
 }

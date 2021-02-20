@@ -16,7 +16,7 @@ public class BeerService {
 	@Autowired
 	private BeerServiceImpl beerServiceImpl;
 	
-	public int createBeer(Beer beer) {
+	public Beer createBeer(Beer beer) {
 		return beerServiceImpl.createBeer(beer);
 	}
 	
@@ -25,11 +25,8 @@ public class BeerService {
 	}
 	
 	public Beer getBeerById(int id) throws BeerNotFoundException{
-		try {
 			return beerServiceImpl.getBeerById(id);
-		}catch(BeerNotFoundException e) {
-			throw new BeerNotFoundException("Beer Not found exception");
-		}
+
 	}
 	
 	public void updateBeer(int id, Beer beer) throws BeerNotFoundException{
