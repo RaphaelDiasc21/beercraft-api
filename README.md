@@ -105,6 +105,3 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
     - Após a execução do comando o arquivo jar da aplicação será gerado na pasta "target"
     - Executar:"java -jar ./target/craft-beer-1.0.jar"
 
-Pode ser algo simples, como executar o arquivo Application.java. Ou talvez tenha alguma dependência como base de dados, por exemplo.
-
-TODO
