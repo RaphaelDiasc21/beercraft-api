@@ -26,7 +26,6 @@ import com.github.fge.jsonpatch.JsonPatch;
 
 @RestController
 @RequestMapping("/beers")
-@Validated
 public class BeerController {
 	
 	@Autowired
