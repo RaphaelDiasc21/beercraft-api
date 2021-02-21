@@ -1,7 +1,6 @@
 package com.beerhouse.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,13 +8,12 @@ import org.springframework.stereotype.Service;
 import com.beerhouse.entities.Beer;
 import com.beerhouse.exceptions.BeerNotFoundException;
 import com.beerhouse.exceptions.ParseJsonPatchException;
+import com.beerhouse.interfaces.IBeerService;
 import com.beerhouse.services.impl.BeerServiceImpl;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.fge.jsonpatch.JsonPatch;
-import com.github.fge.jsonpatch.JsonPatchException;
 
 @Service
-public class BeerService {
+public class BeerService implements IBeerService{
 	
 	@Autowired
 	private BeerServiceImpl beerServiceImpl;

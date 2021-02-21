@@ -36,8 +36,6 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         HttpStatus status, WebRequest request) {
 
         Map<String, Object> body = new LinkedHashMap<>();
-        body.put("timestamp", LocalDate.now());
-        body.put("status", status.value());
 
         List<String> errors = ex.getBindingResult()
                 .getFieldErrors()
@@ -45,6 +43,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
                 .map(x -> x.getDefaultMessage())
                 .collect(Collectors.toList());
 
+        body.put("status", status.value());
         body.put("errors", errors);
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);

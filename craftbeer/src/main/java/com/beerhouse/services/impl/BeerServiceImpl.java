@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.beerhouse.entities.Beer;
 import com.beerhouse.exceptions.BeerNotFoundException;
 import com.beerhouse.exceptions.ParseJsonPatchException;
+import com.beerhouse.interfaces.IBeerServiceImpl;
 import com.beerhouse.repositories.BeerRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,7 +18,7 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 
 @Component
-public class BeerServiceImpl{
+public class BeerServiceImpl implements IBeerServiceImpl{
 	
 	@Autowired
 	private BeerRepository beerRepository;
@@ -75,7 +76,7 @@ public class BeerServiceImpl{
 			
 			beerRepository.save(beerToUpdate);
 		}catch(BeerNotFoundException e) {
-			throw new BeerNotFoundException("Beer nor found");
+			throw new BeerNotFoundException("Beer not found");
 		}
 	}
 	

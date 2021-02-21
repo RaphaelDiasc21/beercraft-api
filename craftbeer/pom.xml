@@ -54,11 +54,20 @@
 		    <version>1.12</version>
 		</dependency>
 		
+		<!-- json -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.11.1</version>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>javax.json</artifactId>
+		    <version>1.1.2</version>
 		</dependency>
+		
+		<!-- Hibernate validator -->
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.0.10.Final</version>
+		</dependency>
+		
 		<!-- H2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
