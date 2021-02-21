@@ -61,13 +61,6 @@
 		    <version>1.1.2</version>
 		</dependency>
 		
-		<!-- Hibernate validator -->
-		<dependency>
-		    <groupId>org.hibernate.validator</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>6.0.10.Final</version>
-		</dependency>
-		
 		<!-- H2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -79,10 +72,51 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+			            <archive>
+			              <manifest>
+			                <addClasspath>true</addClasspath>
+			                <classpathPrefix>lib/</classpathPrefix>
+			                <mainClass>com.beerhouse.Application</mainClass>
+			              </manifest>
+			            </archive>
+			        </configuration>
+			        <executions>
+			            <execution>
+			                <goals>
+			                    <goal>repackage</goal>
+			                </goals>
+			            </execution>
+			        </executions>
                 </plugin>
+                
+                <plugin> 
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-jar-plugin</artifactId>
+	                <version>3.1.0</version>
+	                <configuration>
+	                  <archive>
+	                    <manifest>
+	                      <mainClass>com.beerhouse.Application</mainClass>
+	                    </manifest>
+	                  </archive>
+                	</configuration>
+                </plugin>
+                <plugin>
+			      <artifactId>maven-assembly-plugin</artifactId>
+			      <configuration>
+			        <archive>
+			          <manifest>
+			            <mainClass>fully.qualified.MainClass</mainClass>
+			          </manifest>
+			        </archive>
+			        <descriptorRefs>
+			          <descriptorRef>jar-with-dependencies</descriptorRef>
+			        </descriptorRefs>
+			      </configuration>
+			    </plugin>
             </plugins>
         </pluginManagement>
     </build>

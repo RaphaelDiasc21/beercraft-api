@@ -39,7 +39,7 @@ public class BeerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> beer(@PathVariable @NotNull Integer id){
+	public ResponseEntity<?> beer(@PathVariable Integer id){
 			Beer beer = beerService.getBeerById(id);
 			return ResponseEntity.ok()
 								 .body(beer);
@@ -54,20 +54,19 @@ public class BeerController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateBeer(@PathVariable(required = true) Integer id,@RequestBody @Valid BeerRequestDTO body){
-			System.out.println(id);
+	public ResponseEntity<?> updateBeer(@PathVariable int id,@RequestBody @Valid BeerRequestDTO body){
 			beerService.updateCompleteBeer(id, body.convertToBeer());
 			return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PatchMapping("/{id}")
-	public ResponseEntity<?> patchbeer(@PathVariable(required = true) Integer id, @RequestBody JsonPatch jsonPatch){
+	public ResponseEntity<?> patchbeer(@PathVariable int id, @RequestBody JsonPatch jsonPatch){
 		beerService.updatePatiallyBeer(id, jsonPatch);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteBeer(@PathVariable(required = true) Integer id){
+	public ResponseEntity<?> deleteBeer(@PathVariable int id){
 		System.out.println(id);
 			beerService.deleteBeer(id);
 			return new ResponseEntity<>(HttpStatus.OK);
