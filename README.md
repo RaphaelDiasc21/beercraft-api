@@ -88,6 +88,22 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
 ### [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
 ## Seção reservada para que você descreva brevemente como executar o seu projeto
+ - AVISO: Arquivo da collection do Postman para fazer as requisições para a aplicação se encontra na pasta docs:
+        craftbeer
+    |
+    |docs
+    |    |___CraftBeer.postman_collection.json
+
+    
+ - Execução simplificado do projeto utilizando o maven:
+    - Abrir terminal na pasta do projeto (craftbeer)
+    - Executar o comando: "mvn spring-boot:run"
+  
+ - Execução do projeto utilizando maven, fazendo o build da aplicação para a execução dos testes e executando o jar
+    - Abrir terminal na pasta do projeto (craftbeer)
+    - Executar o comando: "mvn package spring-boot:repackage"
+    - Após a execução do comando o arquivo jar da aplicação será gerado na pasta "target"
+    - Executar:"java -jar ./target/craft-beer-1.0.jar"
 
 Pode ser algo simples, como executar o arquivo Application.java. Ou talvez tenha alguma dependência como base de dados, por exemplo.
 
