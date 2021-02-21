@@ -1,0 +1,17 @@
+server:
+  port: 9000
+  
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:database
+    username: admin
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
