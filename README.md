@@ -88,14 +88,14 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
 ### [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
 
 ## Seção reservada para que você descreva brevemente como executar o seu projeto
- - AVISO: Arquivo da collection do Postman para fazer as requisições para a aplicação se encontra na pasta docs:
-        craftbeer
-    |
-    |docs
-    |    |___CraftBeer.postman_collection.json
+ - AVISO: Arquivo da collection do Postman para fazer as requisições para a aplicação se encontra na pasta docs
 
-    
- - Execução simplificado do projeto utilizando o maven:
+ - Execução da aplicação com o Docker:
+    - Utilizando o docker compose
+    - Estar na raiz do projeto (pasta beercraft-api)
+    - Executar comando: docker-compose up
+
+ - Execução simplificada do projeto utilizando o maven:
     - Abrir terminal na pasta do projeto (craftbeer)
     - Executar o comando: "mvn spring-boot:run"
   
