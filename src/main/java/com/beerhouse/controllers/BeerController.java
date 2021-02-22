@@ -32,20 +32,20 @@ public class BeerController {
 	private BeerService beerService;
 	
 	@GetMapping
-	public ResponseEntity<?> beers(){
+	public ResponseEntity<List<Beer>> beers(){
 		List<Beer> beers = beerService.getBeers();
 		return new ResponseEntity<>(beers, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> beer(@PathVariable Integer id){
+	public ResponseEntity<Beer> beer(@PathVariable Integer id){
 			Beer beer = beerService.getBeerById(id);
 			return ResponseEntity.ok()
 								 .body(beer);
 	}
 	
     @PostMapping
-	public ResponseEntity<?> createBeer(@RequestBody @Valid BeerRequestDTO body){
+	public ResponseEntity<String> createBeer(@RequestBody @Valid BeerRequestDTO body){
 			Beer beerCreated = beerService.createBeer(body.convertToBeer());
 			return ResponseEntity.status(HttpStatus.CREATED)
 								 .header("Location","/beers/" + beerCreated.getId())
@@ -53,21 +53,21 @@ public class BeerController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateBeer(@PathVariable int id,@RequestBody @Valid BeerRequestDTO body){
+	public ResponseEntity<Void> updateBeer(@PathVariable int id,@RequestBody @Valid BeerRequestDTO body){
 			beerService.updateCompleteBeer(id, body.convertToBeer());
 			return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PatchMapping("/{id}")
-	public ResponseEntity<?> patchbeer(@PathVariable int id, @RequestBody JsonPatch jsonPatch){
+	public ResponseEntity<Void> patchbeer(@PathVariable int id, @RequestBody JsonPatch jsonPatch){
 		beerService.updatePatiallyBeer(id, jsonPatch);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteBeer(@PathVariable int id){
+	public ResponseEntity<Void> deleteBeer(@PathVariable int id){
 		System.out.println(id);
 			beerService.deleteBeer(id);
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

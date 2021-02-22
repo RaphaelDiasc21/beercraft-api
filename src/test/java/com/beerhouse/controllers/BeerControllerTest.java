@@ -219,7 +219,7 @@ class BeerControllerTest {
 		assertTrue(mvcResultFailedPerform.getResolvedException() instanceof BeerNotFoundException);
 		
 		MvcResult mvcResultSuccessPerform = mockMvc.perform(requestBuilderToSuccess).andReturn();
-		assertEquals(200, mvcResultSuccessPerform.getResponse().getStatus());	
+		assertEquals(204, mvcResultSuccessPerform.getResponse().getStatus());	
 	}
 	
 	
