@@ -93,6 +93,7 @@ Dica: Copie e cole o conteúdo do arquivo acima no [Swagger Editor](https://edit
  - Execução da aplicação com o Docker:
     - Utilizando o docker compose
     - Estar na raiz do projeto (pasta beercraft-api)
+-   - Executar o comando: "mvn package spring-boot:repackage"
     - Executar comando: docker-compose up
 
  - Execução simplificada do projeto utilizando o maven:
